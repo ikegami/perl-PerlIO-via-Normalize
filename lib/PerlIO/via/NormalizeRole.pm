@@ -185,14 +185,14 @@ interface.
 
 =head3 Any or all method listed in L<PerlIO::via>
 
-The role provides all necessary method to fulfill L<PerlIO::via>'s requirements.
-Specifically, it provides the following methods the implementor must absorb.
+The role provides all necessary methods to fulfill L<PerlIO::via>'s requirements.
+Specifically, it provides the following methods:
 
 =over
 
 =item C<< $class->PUSHED($mode, $fh) >>
 
-=item C<< $self->UTF8($bellowFlag, $fh) >>
+=item C<< $self->UTF8($belowFlag, $fh) >>
 
 =item C<< $self->READ($buffer, $len, $fh) >>
 
@@ -233,7 +233,7 @@ This scalar will be used to hold partially written characters.
 It doesn't need to be initialized.
 
 
-=head3 C<< $self->normalize($buf) >>
+=head3 C<< $self->normalize($buf, $partial_ok) >>
 
 This method is given a sequence of Unicode characters in C<$buf>.
 It must normalize the characters as desired, and then return the
@@ -242,10 +242,7 @@ result in-place.
 NormalizeRole ensures this method always gets all the combining
 marks that applies to the last character.
 
-
-=head3 C<< $safe = $self->extract_safe($buf) >>
-
-~~~
+~~~[ $partial_ok isn't documented. Make sure previous paragraph is still correct. ]~~~
 
 
 =head1 EXPORTS
