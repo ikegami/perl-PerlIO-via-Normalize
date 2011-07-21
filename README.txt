@@ -1,5 +1,7 @@
 PerlIO-via-Normalize
 
+Perform Unicode normalization on file handles using PerlIO layers
+
 ~~~desc~~~
 
 
@@ -19,8 +21,16 @@ This module requires these other modules and libraries:
 
     Module::Build               (For installation only)
     Software::License::CC0_1_0  (For installation only)
+
+    Encode                      (For testing only)
+    IO::Handle                  (For testing only)
     Test::More                  (For testing only)
-    ~~~
+
+    Perl 5.8
+    Carp
+    constant
+    PerlIO::via
+    Unicode::Normalize
     version
 
 

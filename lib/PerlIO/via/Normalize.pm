@@ -6,7 +6,14 @@ use warnings;
 
 use version; our $VERSION = qv('v1.0.0');
 
-# ~~~
+use PerlIO::via::Normalize::NFD        qw( );
+use PerlIO::via::Normalize::NFC        qw( );
+use PerlIO::via::Normalize::NFKD       qw( );
+use PerlIO::via::Normalize::NFKC       qw( );
+use PerlIO::via::Normalize::FCD        qw( );
+use PerlIO::via::Normalize::FCC        qw( );
+use PerlIO::via::Normalize::Decomposed qw( );
+use PerlIO::via::Normalize::Composed   qw( );
 
 1;
 
@@ -15,7 +22,7 @@ __END__
 
 =head1 NAME
 
-PerlIO::via::Normalize - ~~~
+PerlIO::via::Normalize - Perform Unicode normalization on file handles using PerlIO layers
 
 
 =head1 VERSION
@@ -25,17 +32,87 @@ Version 1.0.0
 
 =head1 SYNOPSIS
 
-    ~~~
+    use PerlIO::via::Normalize;
+
+    open(my $in_fh, '<:encoding(UTF-8):via(Normalize::NFD)', $in_qfn)
+       or die("Can't open input file $in_qfn: $!\n");
+
+    open(my $out_fh, '>:encoding(UTF-8):via(Normalize::NFC)', $out_qfn)
+       or die("Can't create output file $out_qfn: $!\n");
+
+    binmode $fh, ':encoding(UTF-16le):via(Normalize::NFC)';
 
 
 =head1 DESCRIPTION
 
-~~~
+This module simply loads a number of modules for your convenience.
+They are:
+
+=over
+
+=item L<PerlIO::via::Normalize::NFD> for Canonical Decomposition form
+
+=item L<PerlIO::via::Normalize::NFC> for Canonical Composition form
+
+=item L<PerlIO::via::Normalize::NFKD> for Compatibility Decomposition form
+
+=item L<PerlIO::via::Normalize::NFKC> for Compatibility Composition form
+
+=item L<PerlIO::via::Normalize::FCD> for Fast C or D form
+
+=item L<PerlIO::via::Normalize::FCC> for Fast C Contiguous form
+
+=item L<PerlIO::via::Normalize::Decomposed> for Canonical Decomposition form
+
+=item L<PerlIO::via::Normalize::Composed> for Canonical Composition form
+
+=back
+
+This makes C<use PerlIO::via::Normalize;> sufficient to use any of the above modules
+using C<:via(Normalize::I<FORM>)> or C<:via(PerlIO::via::Normalize::I<FORM>)>.
+
+
+=head1 EXPORTS
+
+None.
 
 
 =head1 SEE ALSO
 
-~~~
+=head2 The other modules of this distribution
+
+=over
+
+=item L<PerlIO::via::NormalizeRole>, which implements the guts of the modules of this distribution.
+
+=item L<PerlIO::via::Normalize::NFD>, a PerlIO::via layer that transform to NFD.
+
+=item L<PerlIO::via::Normalize::NFC>, a PerlIO::via layer that transform to NFC.
+
+=item L<PerlIO::via::Normalize::NFKD>, a PerlIO::via layer that transform to NFKD.
+
+=item L<PerlIO::via::Normalize::NFKC>, a PerlIO::via layer that transform to NFKC.
+
+=item L<PerlIO::via::Normalize::FCD>, a PerlIO::via layer that transform to FCD form.
+
+=item L<PerlIO::via::Normalize::FCC>, a PerlIO::via layer that transform to FCC form.
+
+=item L<PerlIO::via::Normalize::Decomposed>, a PerlIO::via layer that transform to NFD.
+
+=item L<PerlIO::via::Normalize::Composed>, a PerlIO::via layer that transform to NFC
+
+=back
+
+
+=head2 The modules on which this distribution relies
+
+=over
+
+=item L<Unicode::Normalize>
+
+=item L<PerlIO::via>
+
+=back
 
 
 =head1 BUGS
@@ -53,7 +130,7 @@ You can find documentation for this module with the perldoc command.
 
 You can also look for information at:
 
-=over 4
+=over
 
 =item * Search CPAN
 
