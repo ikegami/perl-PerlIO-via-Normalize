@@ -1,0 +1,14 @@
+.gitignore
+Build.PL
+Changes.txt
+lib/~~~
+LICENSE.txt
+MANIFEST
+MANIFEST.SKIP
+META.yml
+META.json
+README.txt
+t/00_load.t
+t/devel-pod-coverage.t
+t/pod.t
+t/~~~

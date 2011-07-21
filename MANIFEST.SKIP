@@ -1,0 +1,9 @@
+^MYMETA\.
+^Build$
+^Build.bat$
+^_build
+^blib
+^PerlIO-via-Normalize-.*
+^.git/
+~$
+.bak$
