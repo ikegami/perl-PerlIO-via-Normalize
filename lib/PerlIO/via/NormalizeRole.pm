@@ -89,10 +89,10 @@ sub FLUSH {
 }
 
 
-sub new           { my $class = shift;      require Carp; croak( "$class must implement method 'new'"           ); }
-sub get_read_buf  { my $class = ref(shift); require Carp; croak( "$class must implement method 'get_read_buf'"  ); }
-sub get_write_buf { my $class = ref(shift); require Carp; croak( "$class must implement method 'get_write_buf'" ); }
-sub normalize     { my $class = ref(shift); require Carp; croak( "$class must implement method 'normalize'"     ); }
+sub new           { my $class = shift;      require Carp; Carp::croak( "$class must implement method 'new'"           ); }
+sub get_read_buf  { my $class = ref(shift); require Carp; Carp::croak( "$class must implement method 'get_read_buf'"  ); }
+sub get_write_buf { my $class = ref(shift); require Carp; Carp::croak( "$class must implement method 'get_write_buf'" ); }
+sub normalize     { my $class = ref(shift); require Carp; Carp::croak( "$class must implement method 'normalize'"     ); }
 
 
 1;
